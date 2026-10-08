@@ -1,0 +1,18 @@
+#cloud-config
+# Use as `cicustom: user=local:snippets/keep-user.yaml` when you change the
+# network of a VM that is already in use (add an IPv6 address, change the
+# gateway). A changed cloud-init config makes the guest look like a new
+# instance on its next cold start, and the normal per-instance run would
+# reset the root password, regenerate SSH host keys, rewrite the hostname and
+# re-run the vendor data. With this user data the run touches nothing but the
+# network. See docs/ipv6-onlink.md for the full recipe.
+preserve_hostname: true
+manage_etc_hosts: false
+users: []
+disable_root: false
+ssh_deletekeys: false
+ssh_genkeytypes: []
+package_update: false
+package_upgrade: false
+apt:
+  preserve_sources_list: true
