@@ -2,7 +2,7 @@
 
 One script that builds ready-to-clone cloud-init templates on Proxmox VE 8 or 9 from the official cloud images: Debian 12 and 13, Ubuntu 22.04, 24.04 and 26.04, AlmaLinux 8, 9 and 10, Rocky Linux 8, 9 and 10, plus Debian 13 with Docker and Debian 13 with n8n already installed. The images are customised offline with `qemu-nbd` and a chroot (guest agent, Docker, service units), so a clone boots with everything in place and no first-boot installs.
 
-Written and used by [VPSPioneer](https://vpspioneer.com), a UK hosting company whose VPS platform clones these templates for every order. The fixes under `docs/` are the ones we needed in production: Debian 12 without a default route on a /32 address, Debian 12 panicking on `cpu: host`, and adding IPv6 to a running VM without cloud-init resetting the customer's password.
+Maintained by [VPSPioneer](https://vpspioneer.com), a UK hosting company. The notes under `docs/` cover the problems a cloud-image template meets on a dedicated server with failover IPs: Debian 12 without a default route on a /32 address, Debian 12 panicking on `cpu: host`, and adding IPv6 to a running VM without cloud-init resetting the user's password.
 
 ## Quick start
 
@@ -61,7 +61,7 @@ To add or change a template, edit the `TEMPLATES` table at the top of the script
 ## Docs
 
 - [docs/debian12.md](docs/debian12.md): why Debian 12 needs the on-link drop-in and `x86-64-v3`, and the first-boot quirk after a network change.
-- [docs/ipv6-onlink.md](docs/ipv6-onlink.md): IPv6 with a gateway outside the /64, adding IPv6 to a VM that already has a customer without resetting it (`snippets/keep-user.yaml`), and the per-VM source filter (`scripts/ipfilter.sh`).
+- [docs/ipv6-onlink.md](docs/ipv6-onlink.md): IPv6 with a gateway outside the /64, adding IPv6 to a VM that is already in use without resetting it (`snippets/keep-user.yaml`), and the per-VM source filter (`scripts/ipfilter.sh`).
 
 ## Requirements
 

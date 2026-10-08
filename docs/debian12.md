@@ -19,7 +19,7 @@ GatewayOnLink=yes
 
 ## 2. `cpu: host` panics on recent AMD CPUs
 
-With `cpu: host` on a Zen 5 host (Ryzen 9000) the Debian 12 kernel panicked at boot while Debian 13 and Ubuntu booted. `x86-64-v3` boots everywhere we tried. The script writes `CPU_DEBIAN12=x86-64-v3` for this template only, and adds a serial console (`serial0: socket`) so the panic is at least visible.
+With `cpu: host` on a Zen 5 host (Ryzen 9000) the Debian 12 kernel panicked at boot while Debian 13 and Ubuntu booted. `x86-64-v3` boots on every tested host. The script writes `CPU_DEBIAN12=x86-64-v3` for this template only, and adds a serial console (`serial0: socket`) so the panic is at least visible.
 
 ## 3. The first boot after a network change loses IPv4
 
